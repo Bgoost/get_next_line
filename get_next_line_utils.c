@@ -6,7 +6,7 @@
 /*   By: crmanzan <crmanzan@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 19:08:14 by crmanzan          #+#    #+#             */
-/*   Updated: 2023/10/23 19:15:51 by crmanzan         ###   ########.fr       */
+/*   Updated: 2023/10/24 17:54:20 by crmanzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,19 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-char	*ft_strjoin(const char *s1, const char *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*sfin;
 	int		i;
 	int		n;
 
-	if (!s1 || !s2)
-		return (0);
+	if (!s1)
+	{
+		s1 = malloc(sizeof(char) * 1);
+		if (!s1)
+			return (NULL);
+		s1[0] = '\0';
+	}
 	sfin = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
 	i = 0;
 	n = 0;
@@ -47,6 +52,7 @@ char	*ft_strjoin(const char *s1, const char *s2)
 		n++;
 	}
 	sfin[i] = '\0';
+	free(s1);
 	return (sfin);
 }
 

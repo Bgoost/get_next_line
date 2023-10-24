@@ -1,10 +1,4 @@
-hola que tal como estas tu\n, pero hace un poco muchod e frio\n jurjurjurjur\0
-
-
-static char *storage = NULL
-
-# FUNCTION FILL_STORAGE(fd, storage)
-char buffer[BUFFER_SIZE + 1];
+hola que tal como estas tu\n, pero hace un poco muchod e frio\n jurjurjurjur\0static char *storage = NULL# FUNCTION FILL_STORAGE(fd, storage)char buffer[BUFFER_SIZE + 1];
 BUFFER_SIZE = 10
 int num_bytes;
 while(){
