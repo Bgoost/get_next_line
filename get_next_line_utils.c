@@ -6,7 +6,7 @@
 /*   By: crmanzan <crmanzan@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 19:08:14 by crmanzan          #+#    #+#             */
-/*   Updated: 2023/10/25 17:52:35 by crmanzan         ###   ########.fr       */
+/*   Updated: 2023/10/25 18:33:50 by crmanzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,27 +126,7 @@ char	*ft_strchr(const char *s, int c)
 	return (0);
 }*/
 
-char	*ft_strdup(const char *s1)
-{
-	char	*s2;
-	char	*tmp;
-	int		i;
-
-	i = 0;
-	tmp = (char *)s1;
-	s2 = (char *)malloc(ft_strlen(s1)+ 1);
-	if (!s2)
-		return (0);
-	while (s1[i] != '\0')
-	{
-		s2[i] = tmp[i];
-		i++;
-	}
-	s2[i] = '\0';
-	return (s2);
-}
-
-/*char	*ft_substr(const char *s, unsigned int start, size_t len)
+char	*ft_substr(const char *s, unsigned int start, size_t len)
 {
 	char	*s2;
 	size_t	i;
@@ -155,7 +135,7 @@ char	*ft_strdup(const char *s1)
 	if (!s)
 		return (0);
 	if (start >= ft_strlen(s))
-		return (ft_strdup(""));
+		return (NULL);
 	if (len > ft_strlen(s) - start)
 		len = ft_strlen(s) - start;
 	s2 = (char *)malloc((len + 1) * sizeof(char));
@@ -168,9 +148,9 @@ char	*ft_strdup(const char *s1)
 	}
 	s2[i] = '\0';
 	return (s2);
-}*/
+}
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+/*char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	size_t	size;
 	size_t	i;
@@ -195,4 +175,4 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		sub[i++] = s[start++];
 	sub[i] = '\0';
 	return (sub);
-}
+}*/

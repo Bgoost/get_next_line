@@ -6,13 +6,13 @@
 /*   By: crmanzan <crmanzan@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 16:09:10 by crmanzan          #+#    #+#             */
-/*   Updated: 2023/10/25 17:51:43 by crmanzan         ###   ########.fr       */
+/*   Updated: 2023/10/25 18:28:35 by crmanzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char    *update_storage(char *storage)
+static char    *update_storage(char *storage)
 {
     char    *new;
     int     i;
@@ -30,7 +30,7 @@ char    *update_storage(char *storage)
     return (new);
 }
 
-/*char    *get_storage(int fd, char *storage)
+static char    *get_storage(int fd, char *storage)
 {
     char    *buffer;
     int     num_bytes;
@@ -50,7 +50,7 @@ char    *update_storage(char *storage)
         }
         if (num_bytes > 0)
         {
-            printf("fahdsjkhh");
+            //printf("fahdsjkhh");
             buffer[num_bytes] = '\0';
             storage = ft_strjoin(storage, buffer);
         }
@@ -59,8 +59,8 @@ char    *update_storage(char *storage)
     //printf("%s\n", storage);
     return (storage);
 
-}*/
-
+}
+/*
 char	*get_storage(int fd, char *storage)
 {
 	int		num_bytes;
@@ -87,9 +87,9 @@ char	*get_storage(int fd, char *storage)
 	}
 	free(buffer);
 	return (storage);
-}
+}*/
 
-char    *get_line(char *storage)
+static char    *the_line(char *storage)
 {
     char    *line;
     int     i;
@@ -113,7 +113,7 @@ char    *get_next_line(int fd)
     storage = get_storage(fd, storage);
     if (!storage)
         return (NULL);
-    line = get_line(storage);
+    line = the_line(storage);
     if (!line)
     {
         free(storage);
@@ -125,7 +125,7 @@ char    *get_next_line(int fd)
 //    printf("new storage is : %s\n", storage);
     return (line);
 }
-
+/*
 int main()
 {
     int fd;
@@ -137,11 +137,11 @@ int main()
 	{
 			printf("FIRST LINE IS : %s\n", line);
 			free(line);}
-		/*	printf("SECOND LINE IS : %s\n", line);
+		*	printf("SECOND LINE IS : %s\n", line);
 			free(line);
 			printf("THIRD LINE IS : %s\n", line);
 			free(line);
-	}*/
+	}*
 
     //while((line = get_next_line(fd)) != NULL)
     //{
@@ -150,4 +150,4 @@ int main()
       //  free(line);
     //}
         return(0);
-}
+}*/
