@@ -6,11 +6,18 @@
 /*   By: crmanzan <crmanzan@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 16:09:10 by crmanzan          #+#    #+#             */
-/*   Updated: 2023/10/25 18:28:35 by crmanzan         ###   ########.fr       */
+/*   Updated: 2023/10/27 13:49:11 by crmanzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+char *free_all(char **storage)
+{
+    free(*storage);
+    *storage = NULL;
+    return (NULL);
+}
 
 static char    *update_storage(char *storage)
 {
@@ -35,9 +42,9 @@ static char    *get_storage(int fd, char *storage)
     char    *buffer;
     int     num_bytes;
     
-    buffer = (char *)malloc(sizeof(char) * BUFFER_SIZE + 1);
+    buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
     if (!buffer)
-        return (NULL);
+        return (free_all(&storage));
     buffer[0] = '\0';
     num_bytes = 1;
     while (num_bytes > 0 && !ft_strchr(buffer, '\n'))
@@ -46,7 +53,7 @@ static char    *get_storage(int fd, char *storage)
         if (num_bytes == -1)
         {
             free(buffer);
-            return(NULL);
+            return(free_all(&storage));
         }
         if (num_bytes > 0)
         {
@@ -109,24 +116,24 @@ char    *get_next_line(int fd)
 {
     static char *storage = NULL;
     char        *line;
-
+    
+    if(fd < 0 || BUFFER_SIZE <= 0)
+        return (NULL);
     storage = get_storage(fd, storage);
     if (!storage)
         return (NULL);
     line = the_line(storage);
     if (!line)
     {
-        free(storage);
-        storage = NULL;
-        return (NULL);
+        return (free_all(&storage));
     }
  //   printf("old storage is : %s\n", storage);
     storage = update_storage(storage);
 //    printf("new storage is : %s\n", storage);
     return (line);
 }
-/*
-int main()
+
+/*int main()
 {
     int fd;
     char    *line;
@@ -136,12 +143,12 @@ int main()
   while ((line = get_next_line(fd)) != NULL)
 	{
 			printf("FIRST LINE IS : %s\n", line);
-			free(line);}
-		*	printf("SECOND LINE IS : %s\n", line);
+			free(line);
+			printf("SECOND LINE IS : %s\n", line);
 			free(line);
 			printf("THIRD LINE IS : %s\n", line);
 			free(line);
-	}*
+	}
 
     //while((line = get_next_line(fd)) != NULL)
     //{
