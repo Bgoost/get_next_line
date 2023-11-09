@@ -6,7 +6,7 @@
 /*   By: crmanzan <crmanzan@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 16:09:10 by crmanzan          #+#    #+#             */
-/*   Updated: 2023/10/29 11:39:33 by crmanzan         ###   ########.fr       */
+/*   Updated: 2023/11/07 16:59:20 by crmanzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,29 +96,17 @@ char	*get_next_line(int fd)
 	storage = update_storage(storage);
 	return (line);
 }
-
-/*int main()
-{
-    int fd;
-    char    *line;
-
-    fd = open("text.txt", O_RDONLY);
- // line = get_next_line(fd);
-  while ((line = get_next_line(fd)) != NULL)
-	{
-			printf("FIRST LINE IS : %s\n", line);
-			free(line);
-			printf("SECOND LINE IS : %s\n", line);
-			free(line);
-			printf("THIRD LINE IS : %s\n", line);
-			free(line);
-	}
-
-    //while((line = get_next_line(fd)) != NULL)
-    //{
-
-      //  printf("%s/n", line);
-      //  free(line);
-    //}
-        return(0);
-}*/
+//  int main()
+//  {
+//      int fd;
+//      char    *line;
+//  	int i = 1;
+//      fd = open("text.txt", O_RDONLY);
+//      while((line = get_next_line(fd)) != NULL)
+//      {
+//         printf("LINE %i: %s", i, line);
+//         free(line);
+//  	   i++;
+//      }
+//          return(0);
+//  }
